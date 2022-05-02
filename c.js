@@ -1,4 +1,4 @@
-var iV = 1;
+var iV = 2;
 var oContainer = "", oCurrentCoin = "", oCoinList
 var today
 var sLog = ""
