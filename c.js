@@ -1,4 +1,5 @@
-var iV = 3;
+
+var iV = 4;
 var oContainer = "", oCurrentCoin = "", oCoinList
 var today
 var sLog = ""
@@ -173,7 +174,13 @@ function load_coin( offset, limit ){
                         let dFormat = d[0] + '-' + d[1] + '-' + d[2]
                         let iCoin = v.coin_amount.split("+").join("").split(".").join("")
                         let iID = v.id
-                        let reason = v.info.reason.toLowerCase()
+                        let reason = ""
+                        if( null !== v.info.reason ){
+                            reason = v.info.reason.toLowerCase();
+                        }else{
+                            reason = v.name.toLowerCase() ;
+                        }
+
 
                         if( dFormat == reldate ){
                             if( !jQuery('div[relid="'+iID+'"]').length ){
@@ -246,7 +253,7 @@ function calculate_total(){
         let c = jQuery(this).text()
         c = parseInt( c, 10 )
         iTotalCoin += c
-        if( jQuery(this).parent().attr("reason") == 'nhận shopee xu khi xem shopee live' ){
+        if( jQuery(this).parent().attr("reason") == 'nhận shopee xu khi xem shopee live' || jQuery(this).parent().attr("reason") == 'đánh giá sản phẩm' ){
             liveCount++
             iLiveCoin += c
         }
