@@ -16,7 +16,7 @@ var iWaitMenu = window.setInterval(function(){
 
     if( window.location.href.indexOf('user/purchase') !== -1 ){
         clearInterval( iWaitMenu )
-        add_log( iV + '<br/><div onclick="window.location.href='https://shopee.vn/user/coin'" style="padding:15px; background:green;color:yellow">Go To Shopee Coin</div>' )
+        add_log( iV + '<br/><div onclick="window.location.href=\"https://shopee.vn/user/coin\"" style="padding:15px; background:green;color:yellow">Go To Shopee Coin</div>' )
         log()
         return false
     }
