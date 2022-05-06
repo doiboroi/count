@@ -1,3 +1,17 @@
+// ==UserScript==
+// @name         Count shopee coin
+// @namespace    http://tampermonkey.net/
+// @version      2
+// @description  try to take over the world!
+// @author       You
+// @match        https://shopee.vn/user/coin*
+// @match        https://shopee.vn/user/purchase*
+// @icon         https://www.google.com/s2/favicons?domain=shopee.vn
+// @require      https://code.jquery.com/jquery-2.2.4.min.js
+// @require      https://raw.githubusercontent.com/doiboroi/count/main/c.js----
+// @grant        none
+// ==/UserScript==
+
 
 var iV = 4;
 var oContainer = "", oCurrentCoin = "", oCoinList
@@ -246,17 +260,25 @@ function compare( dFormat, reldate ){
 }
 
 function calculate_total(){
+    console.log( "==================================" )
     let iTotalCoin = 0
     let liveCount = 0
     let iLiveCoin = 0
     jQuery('.coin-detail div[reldate="'+reldate+'"] .my-coin').each(function(){
         let c = jQuery(this).text()
         c = parseInt( c, 10 )
-        iTotalCoin += c
-        if( jQuery(this).parent().attr("reason") == 'nhận shopee xu khi xem shopee live' || jQuery(this).parent().attr("reason") == 'đánh giá sản phẩm' ){
-            liveCount++
-            iLiveCoin += c
+        if( jQuery(this).parent().attr("reason") != 'đơn hủy tại shopeefood' && jQuery(this).parent().attr("reason") != 'xu nhận từ shopee chat' ){
+           iTotalCoin += c
         }
+        if( jQuery(this).parent().attr("reason") == 'nhận shopee xu khi xem shopee live' || jQuery(this).parent().attr("reason") == 'đánh giá sản phẩm' ){
+            iLiveCoin += c
+            console.log( jQuery(this).parent().attr("reason") + ": " + c )
+        }
+
+        if( jQuery(this).parent().attr("reason") == 'nhận shopee xu khi xem shopee live' ){
+            liveCount++
+        }
+
         //jQuery(this).parent().css('background', 'red' )
     })
 
