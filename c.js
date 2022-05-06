@@ -1,19 +1,4 @@
-// ==UserScript==
-// @name         Count shopee coin
-// @namespace    http://tampermonkey.net/
-// @version      2
-// @description  try to take over the world!
-// @author       You
-// @match        https://shopee.vn/user/coin*
-// @match        https://shopee.vn/user/purchase*
-// @icon         https://www.google.com/s2/favicons?domain=shopee.vn
-// @require      https://code.jquery.com/jquery-2.2.4.min.js
-// @require      https://raw.githubusercontent.com/doiboroi/count/main/c.js----
-// @grant        none
-// ==/UserScript==
-
-
-var iV = 4;
+var iV = 5;
 var oContainer = "", oCurrentCoin = "", oCoinList
 var today
 var sLog = ""
@@ -36,7 +21,7 @@ var iWaitMenu = window.setInterval(function(){
         return false
     }
 
-    sLog = ( "00" + new Date().getHours() ).slice(-2) + ":" +( "00" + new Date().getMinutes() ).slice(-2) + ":" + ( "00" + new Date().getSeconds() ).slice(-2)
+    sLog = "Version: " + iV + "<br/>" + ("00" + new Date().getHours() ).slice(-2) + ":" +( "00" + new Date().getMinutes() ).slice(-2) + ":" + ( "00" + new Date().getSeconds() ).slice(-2)
 
     if( shopee_top_exists() ){
         if( container_exists() ){
